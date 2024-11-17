@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}company{% endblock title %}
+
+{% block content %}
+    <!-- ======= company Section ======= -->
+    <section id="company" class="company">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>About 
+            Company</h2>
+          <p>An employee management system or EMS is a tool that helps improve employee satisfaction and productivity to help a company achieve their overall goals. These tools help monitor, assess and control employees' working hours and efficiently utilise human resources.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <h3>Business Highlights</h3>
+            <img src="/static/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <p>Ranked the number one IT service provider for customer satisfaction in Europe in an independent survey of over 1,800 CXOs by Whitelane Research. This is the tenth consecutive year that TCS has received the top ranking in this survey. Of the top 23 IT service providers ranked on customer satisfaction, TCS topped the list, scoring 83%, versus the group’s average of 75%.</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Announced an expansion of its long-standing partnership with Phoenix Group, UK’s largest long-term savings and retirements provider, to digitally transform the latter’s ReAssure business using the TCS BaNCS™ based digital platform, and to administer the insurer’s 3 million policies. Consolidating on TCS’ platform will help Phoenix Group drive synergies and enhance customer experience.
+              </p>
+              
+              <p>
+                Named to the Forbes list of America’s Best Large Employers, based on a large, independent survey of US employees. TCS was also recognized as a Global Top Employer for the eighth year in a row, and as Top Employer in North America, Europe, Asia Pacific, and Latin America.
+              </p>
+
+              <div class="position-relative mt-4">
+                <img src="/static/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End company Section -->
+    <div class="container mt-3">
+      <h6 class="alert alert-success text-center">Company detail</h6>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{company_data.name}}</td>
+            <td>{{company_data.adress}}</td>
+            <td>{{company_data.contact}}</td>   
+            <td>{{company_data.email}}</td>  
+            <td>{{company_data.description}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+{% endblock %}

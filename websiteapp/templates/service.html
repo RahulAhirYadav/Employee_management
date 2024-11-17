@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Services{% endblock title %}
+{% block content %}
+    <!-- ======= Our Services Section ======= -->
+    <section id="services" class="services sections-bg">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Building greater futures through innovation and collective knowledge
+              Tata Consultancy Services is an IT services, consulting and business solutions organization that has been partnering with many of the world’s largest businesses for the past 50 years. We believe innovation and collective knowledge can transform all our futures with greater purpose.</p>
+          </div>
+  
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item  position-relative">
+                <div class="icon">
+                  <i class="bi bi-activity"></i>
+                </div>
+                <h3>Acquire talent</h3>
+                <p>Filling open positions with the right people can make employee management easier from the start. That’s why many hiring managers are diligent about writing detailed job descriptions, sourcing and interviewing qualified applicants, and running background checks.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-broadcast"></i>
+                </div>
+                <h3>Manage performance</h3>
+                <p>Employees tend to do their jobs better and are more engaged when they are given opportunities to learn new skills or grow with the organization. To this end, employers may provide training and upskilling programs, encourage attendance at conferences and trade shows, or permit employees to adjust their roles according to their strengths and interests.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-easel"></i>
+                </div>
+                <h3>Support two-way communication</h3>
+                <p>Managers who want to make their employees feel included generally have open door policies and share important information about the business with them. They also provide a forum for individuals to express their ideas, opinions and complaints. This feedback is then used to address any issues that may be negatively affecting the workforce, improve processes and keep employees engaged.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-bounding-box-circles"></i>
+                </div>
+                <h3>Recognize achievements</h3>
+                <p>Employees who know their hard work is appreciated by management and senior leadership are typically more motivated to excel in their roles. Recognition can be a simple thank you or shout-out during a meeting, or a reward, such as a pay raise or promotion.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-calendar4-week"></i>
+                </div>
+                <h3>Increased productivity</h3>
+                <p>The automation and machine learning capabilities that are common with most employee management systems can help HR departments accomplish more with less effort.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-chat-square-text"></i>
+                </div>
+                <h3>Richer employee experiences</h3>
+                <p>Mobile self-service features, online training and upskilling programs and flexible pay options are just a few of the ways technology can enrich the employee experience.</p>
+                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div><!-- End Service Item -->
+          </div>
+        </div>
+      </section><!-- End Our Services Section -->
+      <div class="container mt-3">
+        <h6 class="alert alert-success text-center">Departments List</h6>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for department in department_data %}
+            <tr>
+              <td>{{department.name}}</td>
+              <td>{{department.description}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+      
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h6 class="alert alert-success text-center">Employee list</h6>
+    <form class="d-flex" action="{% url "Emp_attendence" %}"
+    enctype="multipart/form-data">
+        <select class="form-select" id="dlist" name="dlist">
+            {% for deptlist in dept_list %}
+            <option value="{{deptlist.id}}">{{deptlist.name}}</option>
+            {%endfor%}
+        </select> &nbsp; &nbsp;
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>employee</th>
+          <th>department_name</th>
+          <th>date</th>
+          <th>present_status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emplist in DATA %}
+        <tr>
+          <td>{{emplist.employee.firstname}}</td>
+          <td>{{emplist.department_name.name}}</td>
+          <td>{{emplist.date}}</td>
+          <td>{{emplist.present_status}}</td>
+       
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  
+{% endblock %}
+

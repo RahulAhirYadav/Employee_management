@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+{{msg}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attendance Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        select, input[type="date"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Attendance Form</h2>
+    <form method="GET">
+        {% csrf_token %}
+        <label for="department">Select Department:</label>
+        <select name="department_id" id="department">
+            <option value="">All</option>
+            {% for department in departments %}
+                <option value="{{ department.id }}">{{ department.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="status">Select Employee Status:</label>
+        <select name="status" id="status">
+            <option value="">All</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if employees %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="department_id" value="{{ selected_department.id }}">
+        <input type="hidden" name="status" value="{{ selected_status }}">
+        <label for="date">Attendance Date:</label>
+        <input type="date" name="date" id="date">
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                    <th>Attendance Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                    <td>{{ employee.department.department_name }}</td>
+                    <td>
+                        <input type="radio" name="employee_{{ employee.id }}_status" value="Present"> Present
+                        <input type="radio" name="employee_{{ employee.id }}_status" value="Absent"> Absent
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button type="submit">Save Attendance</button>
+        </div>
+    </form>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

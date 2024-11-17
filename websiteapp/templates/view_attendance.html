@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Attendance</h1>
+
+    <!-- Filter Form -->
+    <form method="GET">
+        <label for="department">Select Department:</label>
+        <select name="department_id" id="department">
+            <option value="">All</option>
+            {% for department in departments %}
+                <option value="{{ department.id }}" {% if department.id == selected_department_id %}selected{% endif %}>{{ department.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="date">Select Date:</label>
+        <input type="date" name="date" id="date" value="{{ selected_date }}">
+        <label for="present_status">Select Status:</label>
+        <select name="present_status" id="present_status">
+            <option value="">All</option>
+            <option value="Present" {% if selected_present_status == 'Present' %}selected{% endif %}>Present</option>
+            <option value="Absent" {% if selected_present_status == 'Absent' %}selected{% endif %}>Absent</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Attendance Records Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Present Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+                <tr>
+                    <td>{{ record.employee }}</td>
+                    <td>{{ record.department_name }}</td>
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.present_status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}
